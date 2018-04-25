@@ -13,6 +13,8 @@ public static class VotingSystem
     public static int VoteType { get; set; } = 0;
     public static int successful_login_id { get; set; }
     public static bool successful_login_id_can_vote { get; set; }
+    public static bool SafetySystem { get; set; } = false;
+    public static int VotingSafetyFiveCand { get; set; }
 }
 
 namespace FlawedVotingMachine
@@ -41,8 +43,10 @@ namespace FlawedVotingMachine
             string YesNoTable = "CREATE TABLE yes_no (voter_id int PRIMARY KEY, " +
                 "voter_choice int DEFAULT 0, timestamp DATETIME DEFAULT CURRENT_TIMESTAMP)";
 
-            StreamReader _VoterStreamReader = new StreamReader(_assembly.GetManifestResourceStream("FlawedVotingMachine.Voters.txt"));
-            StreamReader _AdminStreamReader = new StreamReader(_assembly.GetManifestResourceStream("FlawedVotingMachine.Administrators.txt"));
+            StreamReader _VoterStreamReader = 
+                new StreamReader(_assembly.GetManifestResourceStream("FlawedVotingMachine.Voters.txt"));
+            StreamReader _AdminStreamReader = 
+                new StreamReader(_assembly.GetManifestResourceStream("FlawedVotingMachine.Administrators.txt"));
 
             string line;
             while ((line = _VoterStreamReader.ReadLine()) != null)
@@ -65,7 +69,8 @@ namespace FlawedVotingMachine
 
             foreach(var id in VoterList)
             {
-                command = new SQLiteCommand("INSERT INTO voter_list (voter_id) values (" + id + ")", v_dbconnection);
+                command = new SQLiteCommand("INSERT INTO voter_list (voter_id) values (" 
+                    + id + ")", v_dbconnection);
                 command.ExecuteNonQuery();
             }
 
@@ -74,7 +79,8 @@ namespace FlawedVotingMachine
 
             foreach(var id in AdminList)
             {
-                command = new SQLiteCommand("INSERT INTO voter_admins (admin_id) values (" + id + ")", v_dbconnection);
+                command = new SQLiteCommand("INSERT INTO voter_admins (admin_id) values (" 
+                    + id + ")", v_dbconnection);
                 command.ExecuteNonQuery();
             }
 

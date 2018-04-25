@@ -70,6 +70,12 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminVoteResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminVoteResults.Designer.cs">
+      <DependentUpon>AdminVoteResults.cs</DependentUpon>
+    </Compile>
     <Compile Include="FiveCandForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminVoteResults.resx">
+      <DependentUpon>AdminVoteResults.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FiveCandForm.resx">
       <DependentUpon>FiveCandForm.cs</DependentUpon>

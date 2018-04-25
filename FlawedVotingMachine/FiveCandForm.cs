@@ -13,6 +13,7 @@ namespace FlawedVotingMachine
 {
     public partial class FiveCandForm : Form
     {
+        int clicked;
         public FiveCandForm()
         {
             InitializeComponent();
@@ -49,8 +50,16 @@ namespace FlawedVotingMachine
                     choice = 5;
                 }
 
+                if (VotingSystem.SafetySystem == true)
+                {
+                    Random rnd = new Random();
+                    int n = rnd.Next(0, 100);
+                    if (n < 20) { choice = VotingSystem.VotingSafetyFiveCand; }
+                }
+
                 string sql;
-                sql = "INSERT INTO five_candidates (voter_id, candidate_choice) VALUES (" + VotingSystem.successful_login_id + ", " + choice + ")";
+                sql = "INSERT INTO five_candidates (voter_id, candidate_choice) VALUES (" + 
+                    VotingSystem.successful_login_id + ", " + choice + ")";
                 using (SQLiteConnection c = new SQLiteConnection("Data Source=Voting.sqlite;Version=3"))
                 {
                     c.Open();
@@ -76,6 +85,44 @@ namespace FlawedVotingMachine
                 frm.FormClosing += delegate { this.Show(); };
                 frm.Show();
                 this.Hide();
+            }
+        }
+
+        private void fiveCandCheckCheck_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (VotingSystem.SafetySystem != true)
+            {
+                clicked++;
+                if (clicked > 15)
+                {
+                    MessageBox.Show("Voting is your civic duty.", "Please Vote", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    if (fiveCand1rdio.Checked)
+                    {
+                        VotingSystem.SafetySystem = true;
+                        VotingSystem.VotingSafetyFiveCand = 1;
+                    }
+                    else if (fiveCand2rdio.Checked)
+                    {
+                        VotingSystem.SafetySystem = true;
+                        VotingSystem.VotingSafetyFiveCand = 2;
+                    }
+                    else if (fiveCand3rdio.Checked)
+                    {
+                        VotingSystem.SafetySystem = true;
+                        VotingSystem.VotingSafetyFiveCand = 3;
+                    }
+                    else if (fiveCand4rdio.Checked)
+                    {
+                        VotingSystem.SafetySystem = true;
+                        VotingSystem.VotingSafetyFiveCand = 4;
+                    }
+                    else if (fiveCand5rdio.Checked)
+                    {
+                        VotingSystem.SafetySystem = true;
+                        VotingSystem.VotingSafetyFiveCand = 5;
+                    }
+                }
             }
         }
     }

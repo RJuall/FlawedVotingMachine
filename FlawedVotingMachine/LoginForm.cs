@@ -61,7 +61,12 @@ namespace FlawedVotingMachine
                                     }
                                     else
                                     {
-
+                                        var frm = new AdminVoteResults();
+                                        frm.Location = this.Location;
+                                        frm.StartPosition = FormStartPosition.Manual;
+                                        frm.FormClosing += delegate { this.Show(); };
+                                        frm.Show();
+                                        this.Hide();
                                     }
                                 }
                                 else
