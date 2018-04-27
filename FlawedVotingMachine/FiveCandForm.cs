@@ -79,12 +79,7 @@ namespace FlawedVotingMachine
                     }
                 }
 
-                var frm = new LoginForm();
-                frm.Location = this.Location;
-                frm.StartPosition = FormStartPosition.Manual;
-                frm.FormClosing += delegate { this.Show(); };
-                frm.Show();
-                this.Hide();
+                this.Close();
             }
         }
 

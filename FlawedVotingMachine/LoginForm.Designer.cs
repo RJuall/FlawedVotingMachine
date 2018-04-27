@@ -30,6 +30,7 @@
         {
             this.loginBox = new System.Windows.Forms.TextBox();
             this.loginButton = new System.Windows.Forms.Button();
+            this.CloseBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // loginBox
@@ -52,14 +53,26 @@
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
-            // Form1
+            // CloseBtn
+            // 
+            this.CloseBtn.Font = new System.Drawing.Font("Arial Rounded MT Bold", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBtn.Location = new System.Drawing.Point(339, 374);
+            this.CloseBtn.Name = "CloseBtn";
+            this.CloseBtn.Size = new System.Drawing.Size(140, 49);
+            this.CloseBtn.TabIndex = 2;
+            this.CloseBtn.Text = "Close";
+            this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
+            // 
+            // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(832, 653);
+            this.Controls.Add(this.CloseBtn);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.loginBox);
-            this.Name = "Form1";
+            this.Name = "LoginForm";
             this.Text = "RJuall\'s Very Safe Voting Platform";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -70,6 +83,7 @@
 
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Button CloseBtn;
     }
 }
 

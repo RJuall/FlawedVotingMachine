@@ -112,11 +112,21 @@ namespace FlawedVotingMachine
                                             }
                                             else if (VotingSystem.VoteType == 2)
                                             {
-
+                                                var frm = new MultipleCandForm();
+                                                frm.Location = this.Location;
+                                                frm.StartPosition = FormStartPosition.Manual;
+                                                frm.FormClosing += delegate { this.Show(); };
+                                                frm.Show();
+                                                this.Hide();
                                             }
                                             else if (VotingSystem.VoteType == 3)
                                             {
-
+                                                var frm = new YesNoForm();
+                                                frm.Location = this.Location;
+                                                frm.StartPosition = FormStartPosition.Manual;
+                                                frm.FormClosing += delegate { this.Show(); };
+                                                frm.Show();
+                                                this.Hide();
                                             }
                                         }
                                         else
@@ -140,5 +150,7 @@ namespace FlawedVotingMachine
                 loginBox.Text = "Invalid Login";
             }
         }
+
+        private void CloseBtn_Click(object sender, EventArgs e) => Application.Exit();
     }
 }
